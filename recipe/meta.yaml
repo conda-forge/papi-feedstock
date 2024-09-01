@@ -11,8 +11,8 @@ source:
   sha256: 5818afb6dba3ece57f51e65897db5062f8e3464e6ed294b654ebf34c3991bc4f
 
 build:
-  number: 0
-  skip: true  # [not linux]
+  number: 1
+  skip: true  # [win44]
   run_exports:
     - {{ pin_subpackage('papi', max_pin='x.x') }}
 

@@ -1,2 +1,6 @@
 c_stdlib_version:              # [linux]
   - 2.17                       # [linux]
+
+# Pinned because: https://github.com/icl-utk-edu/papi/issues/225
+cuda_version:
+  - "12.5.*"

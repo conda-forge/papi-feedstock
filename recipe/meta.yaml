@@ -1,0 +1,49 @@
+{% set name = "papi" %}
+{% set version = "7.2.0b1" %}
+{% set build = "0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://icl.utk.edu/projects/papi/downloads/papi-{{ version }}.tar.gz
+  sha256: 275d45883064e96c558af467a805d45247d01c41005436978424e2cc75d42d52
+  patches:
+    - 0001-add-pthread-cflags.patch # https://github.com/icl-utk-edu/papi/pull/243
+
+build:
+  number: {{ build }}
+  skip: true  # [not linux]
+  run_exports:
+    - {{ pin_subpackage('papi', max_pin='x.x') }}
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
+    - make
+    - cuda-version {{ cuda_version }}
+    - cuda-toolkit
+    - cuda-cupti-dev
+
+test:
+  commands:
+    - test -f ${PREFIX}/include/papi.h
+    - test -f ${PREFIX}/lib/libpapi.so
+    - test -f ${PREFIX}/lib/pkgconfig/papi.pc
+    - test -f ${PREFIX}/share/papi/papi_events.csv
+    - papi_version
+
+about:
+  home: https://icl.utk.edu/papi
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE.txt
+  summary: Performance Application Programming Interface
+
+extra:
+  recipe-maintainers:
+    - apmorton

@@ -3,4 +3,7 @@ c_stdlib_version:              # [linux]
 
 # Pinned because: https://github.com/icl-utk-edu/papi/issues/225
 cuda_version:
-  - "12.5.*"
+  - 12.5.*
+
+cuda_compiler:
+  - cuda-nvcc

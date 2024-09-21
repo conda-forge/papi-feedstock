@@ -24,10 +24,9 @@ requirements:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}
     - make
-    - cuda-version {{ cuda_version }}
-    - cuda-cupti-dev
+    - cuda-compiler {{ cuda_version }}
+    - cuda-cupti-dev {{ cuda_version }}
 
 test:
   commands:

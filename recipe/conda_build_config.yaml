@@ -1,2 +1,9 @@
+channel_targets:
+  - conda-forge papi_rc
+
 c_stdlib_version:              # [linux]
-  - 2.17                       # [linux]
+  - '2.17'                     # [linux]
+
+# Cuda versions pinned because: https://github.com/icl-utk-edu/papi/issues/225
+cuda_version:
+  - '12.5'

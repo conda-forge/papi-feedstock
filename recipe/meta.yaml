@@ -1,5 +1,6 @@
 {% set name = "papi" %}
-{% set version = "7.1.0" %}
+{% set version = "7.2.0b1" %}
+{% set buildnum = "0" %}
 
 package:
   name: {{ name }}
@@ -8,20 +9,24 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://icl.utk.edu/projects/papi/downloads/papi-{{ version }}.tar.gz
-  sha256: 5818afb6dba3ece57f51e65897db5062f8e3464e6ed294b654ebf34c3991bc4f
+  sha256: 275d45883064e96c558af467a805d45247d01c41005436978424e2cc75d42d52
+  patches:
+    - 0001-add-pthread-cflags.patch # https://github.com/icl-utk-edu/papi/pull/243
 
 build:
-  number: 0
+  number: {{ buildnum }}
   skip: true  # [not linux]
   run_exports:
     - {{ pin_subpackage('papi', max_pin='x.x') }}
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ stdlib('c') }}
     - make
+    - cuda-compiler {{ cuda_version }}
+    - cuda-cupti-dev {{ cuda_version }}
 
 test:
   commands:
@@ -30,6 +35,7 @@ test:
     - test -f ${PREFIX}/lib/pkgconfig/papi.pc
     - test -f ${PREFIX}/share/papi/papi_events.csv
     - papi_version
+    - papi_component_avail
 
 about:
   home: https://icl.utk.edu/papi

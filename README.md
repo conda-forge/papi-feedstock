@@ -51,14 +51,14 @@ Current release info
 Installing papi
 ===============
 
-Installing `papi` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `papi` from the `conda-forge/label/papi_rc` channel can be achieved by adding `conda-forge/label/papi_rc` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/papi_rc
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `papi` can be installed with `conda`:
+Once the `conda-forge/label/papi_rc` channel has been enabled, `papi` can be installed with `conda`:
 
 ```
 conda install papi
@@ -73,26 +73,26 @@ mamba install papi
 It is possible to list all of the versions of `papi` available on your platform with `conda`:
 
 ```
-conda search papi --channel conda-forge
+conda search papi --channel conda-forge/label/papi_rc
 ```
 
 or with `mamba`:
 
 ```
-mamba search papi --channel conda-forge
+mamba search papi --channel conda-forge/label/papi_rc
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search papi --channel conda-forge
+mamba repoquery search papi --channel conda-forge/label/papi_rc
 
 # List packages depending on `papi`:
-mamba repoquery whoneeds papi --channel conda-forge
+mamba repoquery whoneeds papi --channel conda-forge/label/papi_rc
 
 # List dependencies of `papi`:
-mamba repoquery depends papi --channel conda-forge
+mamba repoquery depends papi --channel conda-forge/label/papi_rc
 ```
 
 

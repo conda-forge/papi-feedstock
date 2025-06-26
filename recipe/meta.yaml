@@ -1,5 +1,5 @@
 {% set name = "papi" %}
-{% set version = "7.1.0" %}
+{% set version = "7.2.0" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://icl.utk.edu/projects/papi/downloads/papi-{{ version }}.tar.gz
-  sha256: 5818afb6dba3ece57f51e65897db5062f8e3464e6ed294b654ebf34c3991bc4f
+  sha256: a9bff89ccf39915d729e08ae0a0c6a71ce0ebbe98411e9a2eb3c83c8db0af39c
 
 build:
   number: 0
